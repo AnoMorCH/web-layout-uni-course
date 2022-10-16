@@ -1,9 +1,0 @@
-/* ! Adaptive markup is made until 375px. */
-
-/* 1. General */
-* {
-    padding: 0;
-    border: 0;
-    margin: 0;
-    font-family: 'Open Sans', sans-serif;
-}
