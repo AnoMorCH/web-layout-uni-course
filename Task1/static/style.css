@@ -1,0 +1,217 @@
+/* ! Adaptive markup is made until 375px. */
+
+/* 1. General */
+/* 2. Header */
+/* 3. Main */
+
+/* 1. General */
+* {
+  padding: 0;
+  border: 0;
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+}
+
+@media (max-width: 1440px) {
+  main > div,
+  footer {
+    padding-left: 12.5vw;
+    padding-right: 12.5vw;
+  }
+}
+
+@media (max-width: 1220px) {
+  main > div,
+  footer {
+    padding-left: 10vw;
+    padding-right: 10vw;
+  }
+}
+
+@media (max-width: 768px) {
+  main > div,
+  footer {
+    padding-left: 7.5vw;
+    padding-right: 7.5vw;
+  }
+}
+
+@media (max-width: 425px) {
+  main > div, 
+  footer {
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+}
+
+
+/* 2. Header */
+header {
+  min-height: 15vh;
+
+  display: flex;
+  justify-content: space-around;
+
+  border-bottom: 0.05rem black solid;
+  background-color: rgb(246, 245, 241);
+  font-weight: bolder;
+  font-size: 1.5rem;
+  color: rgb(0, 54, 78);
+}
+
+header > * {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+}
+
+.burger-list {
+  display: flex;
+  justify-content: space-around;
+  width: 55%;
+}
+
+.burger-list > li {
+  margin-top: auto;
+  margin-bottom: auto;
+  text-align: center;
+  display: inline-block;
+  list-style: none;
+  padding: 1rem 2rem;
+  border-radius: 50em;
+  transition: all 0.3s;
+}
+
+.burger-list > li:hover {
+  background-color: rgb(0, 54, 78);
+  color: rgb(246, 245, 241);
+  cursor: pointer;
+}
+
+.burger-list > li:active {
+  transform: scale(0.8);
+}
+
+.burger-icon > div {
+  display: none;
+  width: 25px;
+  height: 5px;
+  background-color: rgb(0, 54, 78);
+  margin-top: 0.3rem;
+  margin-bottom: 0.3rem;
+}
+
+.burger-icon:hover {
+  cursor: pointer;
+}
+
+.burger-list > .close-button {
+  display: none;
+  position: absolute;
+  cursor: pointer;
+  width: 30px;
+  right: 5vw;
+  top: 5vw;
+  color: white;
+}
+
+@media (max-width: 1440px) {
+  header {
+    border-bottom: none;
+    justify-content: space-between;
+
+  }
+
+  .burger-icon {
+    padding-right: 3rem;
+  }
+
+  .logo {
+    padding-top: 1rem;
+    padding-left: 3rem;
+  }
+
+  .burger-icon > div {
+    display: block;
+    position: static;
+  }
+
+  .burger-list > li {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    padding: 0.8rem;
+    margin-top: 1.5vh;
+    margin-bottom: 1.5vh;
+    color: white;
+  }
+
+  .burger-list > li::after {
+    content: "";
+    position: absolute;
+    background-color: white;
+    height: 0.2em;
+    width: 0;
+    left: 0;
+    bottom: 1px;
+    transition: 0.3s;
+  }
+
+  .burger-list > li:hover::after {
+    width: 100%;
+  }
+
+  .burger-list {
+    top: -200%;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    justify-content: center;
+    background: rgb(0, 54, 78);
+    transition: top 1s ease 0s;
+    flex-direction: column;
+  }
+}
+
+/* 3. Main */
+main {
+  background-color: rgb(246, 245, 241);
+}
+
+main > div {
+  padding-left: 15vw;
+  padding-right: 15vw;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+  border-bottom: 0.05rem black solid;
+}
+
+main > div > h1 {
+  padding-bottom: 1rem;
+}
+
+main > div > p {
+  padding-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  main > div {
+    text-align: center;
+    padding-top: 10vw;
+  }
+}
+
+/* 4. Footer */
+footer {
+  padding-left: 15vw;
+  padding-right: 15vw;
+  padding-top: 3vh;
+  padding-bottom: 3vh;
+  background-color: rgb(0, 54, 78);
+  color: white;
+  font-weight: 500;
+}
