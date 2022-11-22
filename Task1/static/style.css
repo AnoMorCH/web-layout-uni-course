@@ -285,6 +285,25 @@ main > div > div.css-picture > div.head {
   z-index: 1001;
 }
 
+main > div > div.css-picture > div.head > div.left-eye, 
+main > div > div.css-picture > div.head > div.right-eye {
+  position: absolute;
+  width: 30%;
+  height: 10%;
+  top: 30%;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  background-color: black;
+}
+
+main > div > div.css-picture > div.head > div.left-eye {
+  left: 25%;
+} 
+
+main > div > div.css-picture > div.head > div.right-eye {
+  left: 65%;
+}
+
 /* 4. Footer */
 footer {
   padding-left: 15vw;
