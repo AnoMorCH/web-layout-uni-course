@@ -37,13 +37,12 @@
 }
 
 @media (max-width: 425px) {
-  main > div, 
+  main > div,
   footer {
     padding-left: 5vw;
     padding-right: 5vw;
   }
 }
-
 
 /* 2. Header */
 header {
@@ -123,7 +122,6 @@ header > * {
   header {
     border-bottom: none;
     justify-content: space-between;
-
   }
 
   .burger-icon {
@@ -219,11 +217,61 @@ main > div > div.css-picture > div.abdomen {
   position: absolute;
   width: 80%;
   height: 40%;
-  background-color: gray;
+  background: radial-gradient(circle at 20%, white, gray, gray), 100%;
   border-radius: 50%;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+main > div > div.css-picture > div.tail {
+  position: absolute;
+  width: 10%;
+  height: 40%;
+  left: 10%;
+  top: 5%;
+  background: radial-gradient(circle at top, white, gray, gray), 100%;
+  border-radius: 50%;
+  transform: rotate(-30deg);
+}
+
+main > div > div.css-picture > div.first-paw,
+main > div > div.css-picture > div.second-paw,
+main > div > div.css-picture > div.third-paw, 
+main > div > div.css-picture > div.fourth-paw {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top-width: 20px;
+  border-top-style: solid;
+  border-top-color: transparent;
+  border-right-width: 50px;
+  border-right-style: solid;
+  border-right-color: gray;
+}
+
+main > div > div.css-picture > div.first-paw {
+  transform: rotate(-50deg);
+  top: 60%;
+}
+
+main > div > div.css-picture > div.second-paw {
+  transform: rotate(-90deg);
+  top: 65%;
+  left: 7%;
+}
+
+main > div > div.css-picture > div.third-paw {
+  transform: rotate(-70deg);
+  top: 70%;
+  left: 50%;
+}
+
+main > div > div.css-picture > div.fourth-paw {
+  transform: rotate(-100deg);
+  top: 70%;
+  left: 60%;
 }
 
 /* 4. Footer */
