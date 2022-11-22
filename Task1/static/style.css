@@ -274,6 +274,17 @@ main > div > div.css-picture > div.fourth-paw {
   left: 60%;
 }
 
+main > div > div.css-picture > div.head {
+  position: absolute;
+  width: 30%;
+  height: 30%;
+  right: 10%;
+  top: 30%;
+  border-radius: 50%;
+  background-color: rgb(110, 109, 109);
+  z-index: 1001;
+}
+
 /* 4. Footer */
 footer {
   padding-left: 15vw;
