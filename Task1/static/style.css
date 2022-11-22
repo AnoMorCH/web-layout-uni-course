@@ -238,7 +238,7 @@ main > div > div.css-picture > div.tail {
 
 main > div > div.css-picture > div.first-paw,
 main > div > div.css-picture > div.second-paw,
-main > div > div.css-picture > div.third-paw, 
+main > div > div.css-picture > div.third-paw,
 main > div > div.css-picture > div.fourth-paw {
   position: absolute;
   width: 0;
@@ -285,7 +285,7 @@ main > div > div.css-picture > div.head {
   z-index: 1001;
 }
 
-main > div > div.css-picture > div.head > div.left-eye, 
+main > div > div.css-picture > div.head > div.left-eye,
 main > div > div.css-picture > div.head > div.right-eye {
   position: absolute;
   width: 30%;
@@ -298,7 +298,7 @@ main > div > div.css-picture > div.head > div.right-eye {
 
 main > div > div.css-picture > div.head > div.left-eye {
   left: 25%;
-} 
+}
 
 main > div > div.css-picture > div.head > div.right-eye {
   left: 65%;
@@ -308,8 +308,8 @@ main > div > div.css-picture > div.head > div.nose {
   position: absolute;
   width: 0;
   height: 0;
-  left: 50%;
-  top: 35%;
+  left: 55%;
+  top: 37.5%;
   border-top-width: 10px;
   border-top-style: solid;
   border-top-color: transparent;
@@ -317,6 +317,25 @@ main > div > div.css-picture > div.head > div.nose {
   border-right-style: solid;
   border-right-color: black;
   transform: rotate(45deg);
+}
+
+main > div > div.css-picture > div.head > div.mouth-left-part,
+main > div > div.css-picture > div.head > div.mouth-right-part {
+  position: absolute;
+  width: 15%;
+  height: 3%;
+  background-color: black;
+  top: 65%;
+}
+
+main > div > div.css-picture > div.head > div.mouth-left-part {
+  transform: rotate(-35deg);
+  left: 50%;
+}
+
+main > div > div.css-picture > div.head > div.mouth-right-part {
+  left: 60%;
+  transform: rotate(35deg);
 }
 
 /* 4. Footer */
