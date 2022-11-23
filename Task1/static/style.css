@@ -5,6 +5,7 @@
 /* 3. Main */
 /* 3.2. Task 2 */
 /* 3.3. Task 3 */
+/* 3.4. Task 4 */
 
 /* 1. General */
 * {
@@ -457,6 +458,15 @@ main > div > div.flexbox-task > label > div.firing-gun {
       transform: translateX(0%);
     }
   }
+}
+
+/* 3.4. Task 4 */
+.class1 {
+  color: rgb(72, 72, 237);
+}
+
+.class2 {
+  color: rgb(254, 85, 85);
 }
 
 /* 4. Footer */
