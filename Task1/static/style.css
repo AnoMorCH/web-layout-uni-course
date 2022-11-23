@@ -74,6 +74,7 @@ header > * {
   display: flex;
   justify-content: space-around;
   width: 55%;
+  z-index: 999;
 }
 
 .burger-list > li {
@@ -224,7 +225,7 @@ main > div > div.css-picture > div.abdomen {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  z-index: 1000;
+  z-index: 1;
 }
 
 main > div > div.css-picture > div.tail {
@@ -284,7 +285,7 @@ main > div > div.css-picture > div.head {
   top: 30%;
   border-radius: 50%;
   background-color: rgb(110, 109, 109);
-  z-index: 1010;
+  z-index: 10;
 }
 
 main > div > div.css-picture > div.head > div.left-eye,
@@ -348,7 +349,7 @@ main > div > div.css-picture > div.right-ear {
   top: 26%;
   border-radius: 50%;
   background: radial-gradient(circle at center, white, rgb(182, 182, 182), rgb(149, 149, 149)), 100%;
-  z-index: 1001;
+  z-index: 2;
 }
 
 main > div > div.css-picture > div.left-ear {

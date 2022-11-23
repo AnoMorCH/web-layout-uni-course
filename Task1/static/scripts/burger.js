@@ -1,5 +1,3 @@
-
-
 const openButton = document.getElementsByClassName('burger-icon')[0];
 const closeButton = document.getElementsByClassName('close-button')[0];
 const menu = document.getElementsByClassName('burger-list')[0];
