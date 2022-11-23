@@ -461,12 +461,38 @@ main > div > div.flexbox-task > label > div.firing-gun {
 }
 
 /* 3.4. Task 4 */
-.class1 {
-  color: rgb(72, 72, 237);
+._class1 {
+  background-color: rgb(72, 72, 237);
 }
 
-.class2 {
-  color: rgb(254, 85, 85);
+._class2 {
+  background-color: rgb(254, 85, 85);
+}
+
+._table-cell {
+  border: 1px solid black;
+  padding: 1vh 1vw;
+}
+
+._custom-btn {
+  padding: 1vh 1vw;
+  border: 1px solid black;
+  border-radius: 10%;
+  margin-top: 3vh;
+}
+
+div.task-4 > div.task-4-1 {
+  text-align: center;
+}
+
+div.task-4 > div.task-4-1 > h2 {
+  padding-bottom: 3vh;
+}
+
+div.task-4 > div.task-4-1 > table {
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* 4. Footer */
