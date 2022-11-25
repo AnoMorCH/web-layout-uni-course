@@ -12,17 +12,138 @@ function getRandomUniqueIndex(list, maxIndexValue) {
     return index;
 }
 
-function updateCellsByEvenness(cell1, cell2, usedRowsAmount) {
-    if (usedRowsAmount % 2 == 0) {
-        cell1.classList.add(colorClass1);
-        cell2.classList.add(colorClass1);
+function updateElementsByEvenness(elementsList, usedAdagesAmount) {
+    if (usedAdagesAmount % 2 == 0) {
+        elementsList.forEach(function (element) {
+            element.classList.add(colorClass1);
+        });
     } else {
-        cell1.classList.add(colorClass2);
-        cell2.classList.add(colorClass2);
+        elementsList.forEach(function (element) {
+            element.classList.add(colorClass2);
+        });
     }
 }
 
-const latingAdage = [
+function showAdagesRandomlyUsingTable() {
+    const tbody = document.getElementById('tbody-task-4-1');
+    const btn = document.getElementById('btn-task-4-1');
+
+    let usedAdagesAmount = 0;
+    let usedAdagesIndexes = [];
+
+    btn.addEventListener('click', function () {
+        if (usedAdagesAmount < adageAmount) {
+            let adageIndex = getRandomUniqueIndex(usedAdagesIndexes, adageAmount);
+            usedAdagesAmount += 1;
+            usedAdagesIndexes.push(adageIndex);
+
+            const row = document.createElement('tr');
+            const cell1 = document.createElement('td');
+            const cell2 = document.createElement('td');
+
+            const customCellClassName = '_table-cell';
+            cell1.classList.add(customCellClassName);
+            cell2.classList.add(customCellClassName);
+
+            updateElementsByEvenness([cell1, cell2], usedAdagesAmount);
+
+            cell1.innerHTML = latinAdage[adageIndex];
+            cell2.innerHTML = russianAdageAnalog[adageIndex];
+
+            row.appendChild(cell1);
+            row.appendChild(cell2);
+            tbody.appendChild(row);
+        } else {
+            alert(everyAdageIsUsedMessage);
+        }
+    });
+}
+
+function showAdagesRandomnlyUsingPTag() {
+    const body = document.getElementById('rand');
+    const btn = document.getElementById('btn-task-4-2');
+
+    let usedAdagesAmount = 0;
+    let usedAdagesIndexes = [];
+
+    btn.addEventListener('click', function () {
+        if (usedAdagesAmount < adageAmount) {
+            let adageIndex = getRandomUniqueIndex(usedAdagesIndexes, adageAmount);
+            usedAdagesAmount += 1;
+            usedAdagesIndexes.push(adageIndex);
+
+            const sentence = document.createElement('p');
+
+            sentence.innerHTML =
+                `<span class="_underline">n = ${usedAdagesAmount - 1}</span> ` +
+                `${latinAdage[adageIndex]} ` +
+                `${russianAdageAnalog[adageIndex]}`;
+
+            updateElementsByEvenness([sentence], usedAdagesAmount);
+
+            body.appendChild(sentence);
+        } else {
+            alert(everyAdageIsUsedMessage);
+        }
+    });
+}
+
+function showAdagesRandomlyUsingList() {
+    const body = document.getElementById('aside-ol');
+    const btn = document.getElementById('btn-task-4-3');
+
+    let usedAdagesAmount = 0;
+    let usedAdagesIndexes = [];
+
+    btn.addEventListener('click', function () {
+        if (usedAdagesAmount < adageAmount) {
+            let adageIndex = getRandomUniqueIndex(usedAdagesIndexes, adageAmount);
+            usedAdagesAmount += 1;
+            usedAdagesIndexes.push(adageIndex);
+
+            const sentence = document.createElement('li');
+
+            sentence.innerHTML =
+                `${latinAdage[adageIndex]}` +
+                `<ul><li>${russianAdageAnalog[adageIndex]}</li></ul>`;
+
+            updateElementsByEvenness([sentence], usedAdagesAmount);
+
+            body.appendChild(sentence);
+        } else {
+            alert(everyAdageIsUsedMessage);
+        }
+    });
+}
+
+function repaintEvenStrings() {
+    const bodiesList = [
+        document.getElementById('tbody-task-4-1'),
+        document.getElementById('rand'),
+        document.getElementById('aside-ol')
+    ]
+
+    const btn = document.getElementById('btn-repaint');
+    let countClicksOnBtn = 0;
+
+    btn.addEventListener('click', function () {
+        bodiesList.forEach(function (body) {
+            for (let i = 0; i < body.children.length; i++) {
+                if (i % 2 != 0) {
+                    if (countClicksOnBtn % 2 == 0) {
+                        body.children[i].style.fontWeight = 'bold';
+                    } else {
+                        body.children[i].style.fontWeight = 'normal';
+                    }
+                }
+            }
+        });
+
+        countClicksOnBtn += 1;
+    });
+}
+
+const latinAdage = [
     '"Consuetudo est altera natura"',
     '"Nota bene"',
     '"Nulla calamitas sola"',
@@ -36,42 +157,13 @@ const russianAdageAnalog = [
     '"Через тернии к звёздам"'
 ]
 
-const adageAmount = latingAdage.length;
+const adageAmount = latinAdage.length;
 const everyAdageIsUsedMessage = 'Фразы закончились';
 
 const colorClass1 = '_class1';
 const colorClass2 = '_class2';
 
-// Task 4.1.
-const tbody41 = document.getElementById('tbody-task-4-1');
-const btnTask41 = document.getElementById('btn-task-4-1');
-
-let usedRowsAmount = 0;
-let usedRowsIndexes = [];
-
-btnTask41.addEventListener('click', function () {
-    if (usedRowsAmount < adageAmount) {
-        let adageIndex = getRandomUniqueIndex(usedRowsIndexes, adageAmount);
-        usedRowsAmount += 1;
-        usedRowsIndexes.push(adageIndex);
-
-        const row = document.createElement('tr');
-        const cell1 = document.createElement('td');
-        const cell2 = document.createElement('td');
-
-        const customCellClassName = '_table-cell';
-        cell1.classList.add(customCellClassName);
-        cell2.classList.add(customCellClassName);
-
-        updateCellsByEvenness(cell1, cell2, usedRowsAmount);
-
-        cell1.innerHTML = latingAdage[adageIndex];
-        cell2.innerHTML = russianAdageAnalog[adageIndex];
-
-        row.appendChild(cell1);
-        row.appendChild(cell2);
-        tbody41.appendChild(row);
-    } else {
-        alert(everyAdageIsUsedMessage);
-    }
-});
+showAdagesRandomlyUsingTable(); // Task 4.1.
+showAdagesRandomnlyUsingPTag(); // Task 4.2.
+showAdagesRandomlyUsingList(); // Task 4.3.
+repaintEvenStrings(); // Repaint Button

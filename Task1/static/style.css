@@ -15,6 +15,10 @@
   font-family: "Open Sans", sans-serif;
 }
 
+._underline {
+  text-decoration: underline;
+}
+
 @media (max-width: 1440px) {
   main > div,
   footer {
@@ -462,11 +466,11 @@ main > div > div.flexbox-task > label > div.firing-gun {
 
 /* 3.4. Task 4 */
 ._class1 {
-  background-color: rgb(72, 72, 237);
+  background-color: rgb(129, 129, 255);
 }
 
 ._class2 {
-  background-color: rgb(254, 85, 85);
+  background-color: rgb(255, 122, 122);
 }
 
 ._table-cell {
@@ -479,20 +483,22 @@ main > div > div.flexbox-task > label > div.firing-gun {
   border: 1px solid black;
   border-radius: 10%;
   margin-top: 3vh;
+  margin-bottom: 3vh;
 }
 
-div.task-4 > div.task-4-1 {
-  text-align: center;
+._custom-btn:hover {
+  cursor: pointer;
 }
 
-div.task-4 > div.task-4-1 > h2 {
+div.task-4 > div.task-4-1 > h2,
+div.task-4 > div.task-4-2 > h2,
+div.task-4 > div.task-4-3 > h2 {
   padding-bottom: 3vh;
 }
 
 div.task-4 > div.task-4-1 > table {
   border-collapse: collapse;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
 }
 
 /* 4. Footer */
