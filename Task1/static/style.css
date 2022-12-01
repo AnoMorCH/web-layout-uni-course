@@ -159,6 +159,7 @@ header > * {
     position: relative;
     padding: 0.8rem;
     margin-top: 1.5vh;
+    font-size: 8vh;
     margin-bottom: 1.5vh;
     color: white;
   }
@@ -213,8 +214,11 @@ main > div > p {
 
 @media (max-width: 768px) {
   main > div {
-    text-align: center;
     padding-top: 10vw;
+  }
+
+  main > div > h1 {
+    text-align: center;
   }
 }
 
