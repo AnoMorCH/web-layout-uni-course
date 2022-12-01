@@ -71,8 +71,15 @@ header > * {
 }
 
 .logo {
+  display: flex;
+  font-size: 50px;
   width: 100px;
   height: 100px;
+  background-color: rgb(0, 54, 78);
+  color: rgb(246, 245, 241);
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
 }
 
 .burger-list {
@@ -137,8 +144,8 @@ header > * {
   }
 
   .logo {
-    padding-top: 1rem;
-    padding-left: 3rem;
+    margin-top: 1rem;
+    margin-left: 3rem;
   }
 
   .burger-icon > div {
