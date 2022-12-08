@@ -6,6 +6,7 @@
 /* 3.2. Task 2 */
 /* 3.3. Task 3 */
 /* 3.4. Task 4 */
+/* 3.5. Task 5 */
 
 /* 1. General */
 * {
@@ -222,7 +223,7 @@ main > div > p {
   }
 }
 
-/* 3.2. Task-2 */
+/* 3.2. Task 2 */
 main > div > div.css-picture {
   margin-left: auto;
   margin-right: auto;
@@ -510,6 +511,33 @@ div.task-4 > div.task-4-3 > h2 {
 div.task-4 > div.task-4-1 > table {
   border-collapse: collapse;
   width: 100%;
+}
+
+/* 3.5. Task 5 */
+div.task-5 > * {
+  padding-bottom: 1rem;
+}
+
+#figure-wrapper {
+  display: grid;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+#puzzle-wrapper {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+}
+
+#figure-wrapper img,
+#puzzle-wrapper img {
+  aspect-ratio: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  border: rgb(0, 54, 78) solid 1px;
 }
 
 /* 4. Footer */
