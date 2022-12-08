@@ -3,6 +3,11 @@ const columnsNumber = 8;
 
 let currentTile;
 let otherTile;
+        
+let checkedTiles = [];
+
+const figureTiles = document.getElementById('figure-wrapper');
+const puzzleTiles = document.getElementById('puzzle-wrapper');
 
 window.onload = () => {
     // Initialize the 8x3 board
@@ -10,8 +15,10 @@ window.onload = () => {
         for (let columnId = 0; columnId < columnsNumber; columnId++) {
             let tile = document.createElement('img');
             tile.src = '/static/images/blank.jpg';
+
             makeTileDraggable(tile);
-            document.getElementById('puzzle-wrapper').append(tile);
+            
+            puzzleTiles.append(tile);
         }
     }
 
@@ -25,10 +32,25 @@ window.onload = () => {
     for (let i = 0; i < tilesAmount; i++) {
         let tile = document.createElement('img');
         tile.src = tilesLocation + tilesId[i] + tilesExtention;
-        changeTileClassGivenCheckProperty(tile);
+
+        changeTileDataGivenItsProperty(tile);
         makeTileDraggable(tile);
-        document.getElementById('figure-wrapper').append(tile);
+        tile.style.rotate = `${90 * Math.floor(Math.random() * tilesAmount)}deg`;
+
+        figureTiles.append(tile);
     }
+
+    const turnCheckedTilesBtn = document.getElementById('turn-tiles');
+
+    turnCheckedTilesBtn.addEventListener('click', () => {
+        checkedTiles.forEach((tile) => {
+            let currentRotation = tile.style.rotate;
+            currentRotation = currentRotation.replace('deg', '');
+            currentRotation = Number(currentRotation);
+            currentRotation += 90;
+            tile.style.rotate = `${currentRotation}deg`;
+        });
+    });
 }
 
 function getFilledTilesId(tilesAmount) {
@@ -51,14 +73,16 @@ function mixFigureTiles(tilesId, tilesAmount) {
     }
 }
 
-function changeTileClassGivenCheckProperty(tile) {
+function changeTileDataGivenItsProperty(tile) {
     const checkedClassName = '_checked';
 
     tile.addEventListener('click', () => {
         if (tile.classList.contains(checkedClassName)) {
             tile.classList.remove(checkedClassName);
+            checkedTiles.splice(checkedTiles.indexOf(tile), 1);
         } else {
             tile.classList.add(checkedClassName);
+            checkedTiles.push(tile);
         }
     });
 }
