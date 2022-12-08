@@ -1,5 +1,3 @@
-// TODO. Clean code after everything.
-
 const rowsNumber = 3;
 const columnsNumber = 8;
 
@@ -27,19 +25,9 @@ window.onload = () => {
     const tilesAmount = 4;
     const tilesLocation = '/static/images/dachshund/'
     const tilesExtention = '.png';
-    let tilesId = [];
 
-    for (let i = 1; i <= tilesAmount; i++) {
-        tilesId.push(i.toString());
-    }
-
-    for (let i = 0; i < tilesAmount; i++) {
-        let j = Math.floor(Math.random() * tilesAmount);
-
-        let temp = tilesId[i];
-        tilesId[i] = tilesId[j];
-        tilesId[j] = temp;
-    }
+    const tilesId = getFilledTilesId(tilesAmount); 
+    mixFigureTiles(tilesId, tilesAmount);
 
     for (let i = 0; i < tilesAmount; i++) {
         let tile = document.createElement('img');
@@ -53,6 +41,26 @@ window.onload = () => {
         tile.addEventListener('dragend', dragEnd);
 
         document.getElementById('figure-wrapper').append(tile);
+    }
+}
+
+function getFilledTilesId(tilesAmount) {
+    let tilesId = [];
+
+    for (let i = 1; i <= tilesAmount; i++) {
+        tilesId.push(i.toString());
+    }
+    
+    return tilesId;
+}
+
+function mixFigureTiles(tilesId, tilesAmount) {
+    for (let i = 0; i < tilesAmount; i++) {
+        let j = Math.floor(Math.random() * tilesAmount);
+
+        let temp = tilesId[i];
+        tilesId[i] = tilesId[j];
+        tilesId[j] = temp;
     }
 }
 
