@@ -134,9 +134,13 @@ function dragEnd() {
         return
     }
 
-    let currentImg = currentTile.src;
-    let otherImg = otherTile.src;
+    const currentImgSrc = currentTile.src;
+    const currentImgRotate = currentTile.style.rotate;
+    const otherImgSrc = otherTile.src;
+    const otherImgRotate = otherTile.style.rotate;
 
-    currentTile.src = otherImg;
-    otherTile.src = currentImg;
+    currentTile.src = otherImgSrc;
+    currentTile.style.rotate = otherImgRotate;
+    otherTile.src = currentImgSrc;
+    otherTile.style.rotate = currentImgRotate;
 }
