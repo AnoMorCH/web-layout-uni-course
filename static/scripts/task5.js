@@ -1,41 +1,32 @@
 const rowsNumber = 3;
 const columnsNumber = 8;
 
+const tilesAmount = 4;
+
 let currentTile;
 let otherTile;
-        
+
 let checkedTiles = [];
 
 const figureTiles = document.getElementById('figure-wrapper');
 const puzzleTiles = document.getElementById('puzzle-wrapper');
 
 window.onload = () => {
-    // Initialize the 8x3 board
-    for (let rowId = 0; rowId < rowsNumber; rowId++) {
-        for (let columnId = 0; columnId < columnsNumber; columnId++) {
-            let tile = document.createElement('img');
-            tile.src = '/static/images/blank.jpg';
+    initialize8x3Board();
 
-            makeTileDraggable(tile);
-            
-            puzzleTiles.append(tile);
-        }
-    }
-
-    const tilesAmount = 4;
     const tilesLocation = '/static/images/dachshund/'
     const tilesExtention = '.png';
 
-    const tilesId = getFilledTilesId(tilesAmount);
-    mixFigureTiles(tilesId, tilesAmount);
+    const tilesId = getFilledTilesId();
+    mixFigureTiles(tilesId);
 
     for (let i = 0; i < tilesAmount; i++) {
         let tile = document.createElement('img');
         tile.src = tilesLocation + tilesId[i] + tilesExtention;
 
         changeTileDataGivenItsProperty(tile);
-        makeTileDraggable(tile);
-        tile.style.rotate = `${90 * Math.floor(Math.random() * tilesAmount)}deg`;
+        makeElementDraggable(tile);
+        setRandomRotationForElement(tile);
 
         figureTiles.append(tile);
     }
@@ -45,15 +36,37 @@ window.onload = () => {
     turnCheckedTilesBtn.addEventListener('click', () => {
         checkedTiles.forEach((tile) => {
             let currentRotation = tile.style.rotate;
-            currentRotation = currentRotation.replace('deg', '');
-            currentRotation = Number(currentRotation);
-            currentRotation += 90;
+            currentRotation = getCurrentRotationNumPlus90Deg(currentRotation);
             tile.style.rotate = `${currentRotation}deg`;
         });
     });
 }
 
-function getFilledTilesId(tilesAmount) {
+function initialize8x3Board() {
+    for (let rowId = 0; rowId < rowsNumber; rowId++) {
+        for (let columnId = 0; columnId < columnsNumber; columnId++) {
+            let tile = document.createElement('img');
+            tile.src = '/static/images/blank.jpg';
+
+            makeElementDraggable(tile);
+
+            puzzleTiles.append(tile);
+        }
+    }
+}
+
+function getCurrentRotationNumPlus90Deg(currentRotation) {
+    currentRotation = currentRotation.replace('deg', '');
+    currentRotation = Number(currentRotation);
+    currentRotation += 90;
+    return currentRotation;
+}
+
+function setRandomRotationForElement(element) {
+    element.style.rotate = `${90 * Math.floor(Math.random() * tilesAmount)}deg`;
+}
+
+function getFilledTilesId() {
     let tilesId = [];
 
     for (let i = 1; i <= tilesAmount; i++) {
@@ -63,7 +76,7 @@ function getFilledTilesId(tilesAmount) {
     return tilesId;
 }
 
-function mixFigureTiles(tilesId, tilesAmount) {
+function mixFigureTiles(tilesId) {
     for (let i = 0; i < tilesAmount; i++) {
         let j = Math.floor(Math.random() * tilesAmount);
 
@@ -87,7 +100,7 @@ function changeTileDataGivenItsProperty(tile) {
     });
 }
 
-function makeTileDraggable(tile) {
+function makeElementDraggable(tile) {
     tile.addEventListener('dragstart', dragStart);
     tile.addEventListener('dragover', dragOver);
     tile.addEventListener('dragenter', dragEnter);
@@ -95,6 +108,8 @@ function makeTileDraggable(tile) {
     tile.addEventListener('drop', dragDrop);
     tile.addEventListener('dragend', dragEnd);
 }
+
+// Set up drag functions.
 
 function dragStart() {
     currentTile = this;
