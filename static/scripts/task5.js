@@ -10,14 +10,7 @@ window.onload = () => {
         for (let columnId = 0; columnId < columnsNumber; columnId++) {
             let tile = document.createElement('img');
             tile.src = '/static/images/blank.jpg';
-
-            tile.addEventListener('dragstart', dragStart);
-            tile.addEventListener('dragover', dragOver);
-            tile.addEventListener('dragenter', dragEnter);
-            tile.addEventListener('dragleave', dragLeave);
-            tile.addEventListener('drop', dragDrop);
-            tile.addEventListener('dragend', dragEnd);
-
+            makeTileDraggable(tile);
             document.getElementById('puzzle-wrapper').append(tile);
         }
     }
@@ -26,20 +19,14 @@ window.onload = () => {
     const tilesLocation = '/static/images/dachshund/'
     const tilesExtention = '.png';
 
-    const tilesId = getFilledTilesId(tilesAmount); 
+    const tilesId = getFilledTilesId(tilesAmount);
     mixFigureTiles(tilesId, tilesAmount);
 
     for (let i = 0; i < tilesAmount; i++) {
         let tile = document.createElement('img');
         tile.src = tilesLocation + tilesId[i] + tilesExtention;
-
-        tile.addEventListener('dragstart', dragStart);
-        tile.addEventListener('dragover', dragOver);
-        tile.addEventListener('dragenter', dragEnter);
-        tile.addEventListener('dragleave', dragLeave);
-        tile.addEventListener('drop', dragDrop);
-        tile.addEventListener('dragend', dragEnd);
-
+        changeTileClassGivenCheckProperty(tile);
+        makeTileDraggable(tile);
         document.getElementById('figure-wrapper').append(tile);
     }
 }
@@ -50,7 +37,7 @@ function getFilledTilesId(tilesAmount) {
     for (let i = 1; i <= tilesAmount; i++) {
         tilesId.push(i.toString());
     }
-    
+
     return tilesId;
 }
 
@@ -62,6 +49,27 @@ function mixFigureTiles(tilesId, tilesAmount) {
         tilesId[i] = tilesId[j];
         tilesId[j] = temp;
     }
+}
+
+function changeTileClassGivenCheckProperty(tile) {
+    const checkedClassName = '_checked';
+
+    tile.addEventListener('click', () => {
+        if (tile.classList.contains(checkedClassName)) {
+            tile.classList.remove(checkedClassName);
+        } else {
+            tile.classList.add(checkedClassName);
+        }
+    });
+}
+
+function makeTileDraggable(tile) {
+    tile.addEventListener('dragstart', dragStart);
+    tile.addEventListener('dragover', dragOver);
+    tile.addEventListener('dragenter', dragEnter);
+    tile.addEventListener('dragleave', dragLeave);
+    tile.addEventListener('drop', dragDrop);
+    tile.addEventListener('dragend', dragEnd);
 }
 
 function dragStart() {

@@ -540,6 +540,10 @@ div.task-5 > * {
   border: rgb(0, 54, 78) solid 1px;
 }
 
+._checked {
+  transform: scale(1.05);
+}
+
 /* 4. Footer */
 footer {
   padding-left: 15vw;
