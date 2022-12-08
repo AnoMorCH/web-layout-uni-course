@@ -199,13 +199,9 @@ function dragEnd() {
 
     currentTile.src = otherImgSrc;
     currentTile.style.rotate = otherImgRotate;
-    currentTile.classList.remove(checkedClassName);
-    checkedTiles.splice(checkedTiles.indexOf(currentTile), 1);
 
     otherTile.src = currentImgSrc;
     otherTile.style.rotate = currentImgRotate;
-    otherTile.classList.add(checkedClassName);
-    checkedTiles.push(otherTile);
 
     checkIfPlayerSucceed();
 }
