@@ -28,6 +28,9 @@ function getScrollDestination(event) {
         case 'task-4':
             scrollDestination = document.getElementsByClassName('task-4')[0];
             break;
+        case 'task-5':
+            scrollDestination = document.getElementsByClassName('task-5')[0];
+            break;
     }
 
     return scrollDestination;
