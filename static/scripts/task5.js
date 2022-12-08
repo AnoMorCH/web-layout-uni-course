@@ -1,7 +1,7 @@
 const rowsNumber = 3;
 const columnsNumber = 8;
-
 const tilesAmount = 4;
+const checkedClassName = '_checked';
 
 let currentTile;
 let otherTile;
@@ -87,8 +87,6 @@ function mixFigureTiles(tilesId) {
 }
 
 function changeTileDataGivenItsProperty(tile) {
-    const checkedClassName = '_checked';
-
     tile.addEventListener('click', () => {
         if (tile.classList.contains(checkedClassName)) {
             tile.classList.remove(checkedClassName);
@@ -136,11 +134,17 @@ function dragEnd() {
 
     const currentImgSrc = currentTile.src;
     const currentImgRotate = currentTile.style.rotate;
+
     const otherImgSrc = otherTile.src;
     const otherImgRotate = otherTile.style.rotate;
 
     currentTile.src = otherImgSrc;
     currentTile.style.rotate = otherImgRotate;
+    currentTile.classList.remove(checkedClassName);
+    checkedTiles.slice(checkedTiles.indexOf(currentTile), 1);
+
     otherTile.src = currentImgSrc;
     otherTile.style.rotate = currentImgRotate;
+    otherTile.classList.add(checkedClassName);
+    checkedTiles.push(otherTile);
 }
