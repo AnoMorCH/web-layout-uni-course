@@ -14,34 +14,32 @@ let checkedTiles = [];
 const figureTiles = document.getElementById('figure-wrapper');
 const puzzleTiles = document.getElementById('puzzle-wrapper');
 
-window.onload = () => {
-    initialize8x3Board();
+initialize8x3Board();
 
-    const tilesId = getFilledTilesId();
-    mixFigureTiles(tilesId);
+const tilesId = getFilledTilesId();
+mixFigureTiles(tilesId);
 
-    for (let i = 0; i < tilesAmount; i++) {
-        let tile = document.createElement('img');
-        tile.src = tilesLocation + tilesId[i] + tilesExtention;
+for (let i = 0; i < tilesAmount; i++) {
+    let tile = document.createElement('img');
+    tile.src = tilesLocation + tilesId[i] + tilesExtention;
 
-        changeTileDataGivenItsProperty(tile);
-        makeElementDraggable(tile);
-        setRandomRotationForElement(tile);
+    changeTileDataGivenItsProperty(tile);
+    makeElementDraggable(tile);
+    setRandomRotationForElement(tile);
 
-        figureTiles.append(tile);
-    }
-
-    const turnCheckedTilesBtn = document.getElementById('turn-tiles');
-
-    turnCheckedTilesBtn.addEventListener('click', () => {
-        checkedTiles.forEach((tile) => {
-            let currentRotation = tile.style.rotate;
-            currentRotation = getRotateStyleAsNum(currentRotation) + 90;
-            tile.style.rotate = `${currentRotation}deg`;
-            checkIfPlayerSucceed();
-        });
-    });
+    figureTiles.append(tile);
 }
+
+const turnCheckedTilesBtn = document.getElementById('turn-tiles');
+
+turnCheckedTilesBtn.addEventListener('click', () => {
+    checkedTiles.forEach((tile) => {
+        let currentRotation = tile.style.rotate;
+        currentRotation = getRotateStyleAsNum(currentRotation) + 90;
+        tile.style.rotate = `${currentRotation}deg`;
+        checkIfPlayerSucceed();
+    });
+});
 
 function initialize8x3Board() {
     for (let rowId = 0; rowId < rowsNumber; rowId++) {
@@ -162,7 +160,7 @@ function checkIfPlayerSucceed() {
                     }
                 }
 
-                alert('Фигура собрана правильно!');
+                alert('Поздравляем! Фигура собрана правильно :)');
             }
         }
     });
@@ -202,7 +200,7 @@ function dragEnd() {
     currentTile.src = otherImgSrc;
     currentTile.style.rotate = otherImgRotate;
     currentTile.classList.remove(checkedClassName);
-    checkedTiles.slice(checkedTiles.indexOf(currentTile), 1);
+    checkedTiles.splice(checkedTiles.indexOf(currentTile), 1);
 
     otherTile.src = currentImgSrc;
     otherTile.style.rotate = currentImgRotate;
